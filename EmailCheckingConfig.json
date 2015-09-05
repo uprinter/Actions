@@ -1,0 +1,23 @@
+{
+    "accounts": {
+        "mailbox_account": {
+            "server": "{host:110/pop3}INBOX",
+            "user": "username",
+            "password": "password"
+        }
+    },
+    "actions": [ {
+            "name": "HandleRequestByEmail",
+            "account": "mailbox_account",
+            "check": "*/1 * * * *",
+            "registerPath": {"alias": "PathAlias", "path": "path/to/my/Actions"},
+            "email": {
+                "fromRegexp": "[@|\\.]example\\.com$",
+                "subjectRegexp": [
+                    "get file for ([0-9]+) with version ([0-9]+\\.[0-9]+[a-z]?)",
+                    "get file for ([0-9]+)"
+                ]
+            }
+        }
+    ]
+}
